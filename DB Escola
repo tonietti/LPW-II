@@ -1,0 +1,30 @@
+CREATE DATABASE Escola;
+
+
+CREATE TABLE `Aluno` (
+ `Id` int(8) NOT NULL,
+ `Matricula` int(8) NOT NULL,
+ `Nome` varchar(12) NOT NULL,
+ `Sobrenome` varchar(12) NOT NULL,
+ `Email` varchar(30) NOT NULL,
+ PRIMARY KEY (`Id`),
+ UNIQUE KEY (`Matricula`),
+ UNIQUE KEY (`Email`)
+);
+
+CREATE TABLE `Disciplina` (
+ `Id` int(8) NOT NULL,
+ `Nome` varchar(12) NOT NULL,
+ `Curso` varchar(12) NOT NULL,
+ `Professor` varchar(12) NOT NULL,
+ PRIMARY KEY (`Id`)
+);
+
+CREATE TABLE `Vinculo` (
+ `Id` int(8) NOT NULL,
+ `Aluno` int(8) NOT NULL,
+ `Disciplina` int(8) NOT NULL,
+ PRIMARY KEY (`Id`),
+ FOREIGN KEY (`Aluno`) REFERENCES `aluno` (`Id`),
+ FOREIGN KEY (`Disciplina`) REFERENCES `disciplina` (`Id`)
+);
