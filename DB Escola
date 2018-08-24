@@ -1,30 +1,30 @@
-CREATE DATABASE Escola;
+CREATE DATABASE escola;
 
 
-CREATE TABLE `Aluno` (
- `Id` int(8) NOT NULL,
- `Matricula` int(8) NOT NULL,
- `Nome` varchar(12) NOT NULL,
- `Sobrenome` varchar(12) NOT NULL,
- `Email` varchar(30) NOT NULL,
- PRIMARY KEY (`Id`),
- UNIQUE KEY (`Matricula`),
- UNIQUE KEY (`Email`)
+CREATE TABLE `aluno` (
+ `id` int(11) NOT NULL,
+ `matricula` int(11) NOT NULL,
+ `nome` varchar(30) NOT NULL,
+ `sobrenome` varchar(30) NOT NULL,
+ `email` varchar(30) NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY (`matricula`),
+ UNIQUE KEY (`email`)
 );
 
-CREATE TABLE `Disciplina` (
- `Id` int(8) NOT NULL,
- `Nome` varchar(12) NOT NULL,
- `Curso` varchar(12) NOT NULL,
- `Professor` varchar(12) NOT NULL,
- PRIMARY KEY (`Id`)
+CREATE TABLE `disciplina` (
+ `id` int(11) NOT NULL,
+ `nome` varchar(30) NOT NULL,
+ `curso` ENUM('redes','sistema') NOT NULL,
+ `professor` varchar(30) NOT NULL,
+ PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Vinculo` (
- `Id` int(8) NOT NULL,
- `Aluno` int(8) NOT NULL,
- `Disciplina` int(8) NOT NULL,
- PRIMARY KEY (`Id`),
- FOREIGN KEY (`Aluno`) REFERENCES `aluno` (`Id`),
- FOREIGN KEY (`Disciplina`) REFERENCES `disciplina` (`Id`)
+CREATE TABLE `vinculo` (
+ `id` int(11) NOT NULL,
+ `aluno` int(11) NOT NULL,
+ `disciplina` int(11) NOT NULL,
+ PRIMARY KEY (`id`),
+ FOREIGN KEY (`aluno`) REFERENCES `aluno` (`id`),
+ FOREIGN KEY (`disciplina`) REFERENCES `disciplina` (`id`)
 );
